@@ -62,13 +62,13 @@ function tween1A() {
     stage.addChild(Animation1A_container);
 
     createjs.Tween.get(anim1A_c1, {loop: false})
-        .to({alpha: 1, x: cx-150}, 250, createjs.Ease.quartOut)
-        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
+        .to({alpha: 1, x: cx-150}, 200, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 200, createjs.Ease.quartIn);
 
     createjs.Tween.get(anim1A_c2, {loop: false})
-        .to({alpha: 1, x: cx+150}, 250, createjs.Ease.quartOut)
-        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn)
-        .call(function(){playing[1]=false; stage.removeChild(Animation1A_container)});
+        .to({alpha: 1, x: cx+150}, 200, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 200, createjs.Ease.quartIn)
+        .call(function(){stage.removeChild(Animation1A_container)});
 }
 
 function shape1B() {
@@ -92,13 +92,13 @@ function tween1B() {
     stage.addChild(Animation1B_container);
 
     createjs.Tween.get(anim1B_c1, {loop: false})
-        .to({alpha: 1, x: cx-150}, 250, createjs.Ease.quartOut)
-        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
+        .to({alpha: 1, x: cx-150}, 200, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 200, createjs.Ease.quartIn);
 
     createjs.Tween.get(anim1B_c2, {loop: false})
-        .to({alpha: 1, x: cx+150}, 250, createjs.Ease.quartOut)
-        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn)
-        .call(function(){playing[1]=false; stage.removeChild(Animation1B_container)});
+        .to({alpha: 1, x: cx+150}, 200, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 200, createjs.Ease.quartIn)
+        .call(function(){stage.removeChild(Animation1B_container)});
 }
 
 function shape2A() {
@@ -120,7 +120,7 @@ function tween2A() {
         .to({scaleX: 0.01, scaleY: 0.01}, 1)
         .to({scaleX: 1, scaleY: 1}, 250, createjs.Ease.quartOut)
         .to({scaleX: 0.001, scaleY: 0.001}, 250, createjs.Ease.quartIn)
-        .call(function(){playing[2]=false; stage.removeChild(Animation2A_container)});
+        .call(function(){stage.removeChild(Animation2A_container)});
 }
 
 function shape2B() {
@@ -142,7 +142,7 @@ function tween2B() {
         .to({scaleX: 0.01, scaleY: 0.01}, 1)
         .to({scaleX: 1, scaleY: 1}, 250, createjs.Ease.quartOut)
         .to({scaleX: 0.001, scaleY: 0.001}, 250, createjs.Ease.quartIn)
-        .call(function(){playing[2]=false; stage.removeChild(Animation2B_container)});
+        .call(function(){stage.removeChild(Animation2B_container)});
 }
 
 function shape3A() {
@@ -167,19 +167,19 @@ function tween3A() {
     createjs.Tween.get(anim3A_l1, {loop: false})
         .to({y: 0}, 0)
         .to({scaleY: 0}, 0)
-        .to({scaleY: 1}, 250, createjs.Ease.linear)
-        .to({y:2*h}, 250, createjs.Ease.linear);
+        .to({scaleY: 1}, 200, createjs.Ease.linear)
+        .to({y:2*h}, 200, createjs.Ease.linear);
    createjs.Tween.get(anim3A_l2, {loop: false})
         .to({y: 0}, 0)   
         .to({scaleY: 0}, 0)
-        .to({scaleY: 1}, 250, createjs.Ease.linear)
-        .to({y:2*h}, 250, createjs.Ease.linear);
+        .to({scaleY: 1}, 200, createjs.Ease.linear)
+        .to({y:2*h}, 200, createjs.Ease.linear);
    createjs.Tween.get(anim3A_l3, {loop: false})
         .to({y: 0}, 0)
         .to({scaleY: 0}, 0)
-        .to({scaleY: 1}, 250, createjs.Ease.linear)
-        .to({y:2*h}, 250, createjs.Ease.linear)
-        .call(function(){playing[3]=false; stage.removeChild(Animation3A_container)});    
+        .to({scaleY: 1}, 200, createjs.Ease.linear)
+        .to({y:2*h}, 200, createjs.Ease.linear)
+        .call(function(){stage.removeChild(Animation3A_container)});    
 }
 
 function shape3B() {
@@ -204,19 +204,19 @@ function tween3B() {
     createjs.Tween.get(anim3B_l1, {loop: false})
         .to({y: h}, 0)
         .to({scaleY: 0}, 0)
-        .to({scaleY: -1}, 250, createjs.Ease.linear)
-        .to({y:0}, 250, createjs.Ease.linear);
+        .to({scaleY: -1}, 200, createjs.Ease.linear)
+        .to({y:0}, 200, createjs.Ease.linear);
    createjs.Tween.get(anim3B_l2, {loop: false})
         .to({y: h}, 0)
         .to({scaleY: 0}, 0)
-        .to({scaleY: -1}, 250, createjs.Ease.linear)
-        .to({y:0}, 250, createjs.Ease.linear);
+        .to({scaleY: -1}, 200, createjs.Ease.linear)
+        .to({y:0}, 200, createjs.Ease.linear);
    createjs.Tween.get(anim3B_l3, {loop: false})
         .to({y: h}, 0)
         .to({scaleY: 0}, 0)
-        .to({scaleY: -1}, 250, createjs.Ease.linear)
-        .to({y:0}, 250, createjs.Ease.linear)
-        .call(function(){playing[3]=false; stage.removeChild(Animation3B_container)});
+        .to({scaleY: -1}, 200, createjs.Ease.linear)
+        .to({y:0}, 200, createjs.Ease.linear)
+        .call(function(){stage.removeChild(Animation3B_container)});
 }
 
 function shape4A() {
@@ -239,7 +239,7 @@ function tween4A() {
         .to({scaleX:1, scaleY: 1}, 50, createjs.Ease.linear)
         .to({x:w+cx, y:h+cy}, 200, createjs.Ease.linear)
         .to({x:-cx, y:-cy}, 0)
-        .call(function(){playing[4]=false; stage.removeChild(Animation4A_container)});
+        .call(function(){stage.removeChild(Animation4A_container)});
 }
 
 function shape4B() {
@@ -262,7 +262,7 @@ function tween4B() {
         .to({scaleX:1, scaleY: 1}, 50, createjs.Ease.linear)
         .to({x:-cx, y:-cy}, 200, createjs.Ease.linear)
         .to({x:w+cx, y:h+cy}, 0)
-        .call(function(){playing[4]=false; stage.removeChild(Animation4B_container)});   
+        .call(function(){stage.removeChild(Animation4B_container)});   
 }
 
 function shape5A() {
@@ -301,10 +301,10 @@ function tween5A() {
         var random_y = Math.random() * (y_upper_bound - y_lower_bound) + y_lower_bound;
         createjs.Tween.get(anim5A_circles[j], {loop: false})
             .to({x: x1, y: y1}, 0)
-            .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
-            .wait(250)
+            .to({x: random_x, y: random_y}, 200, createjs.Ease.quartInOut)
+            .wait(200)
             .to({x:x1,y:y1},0)
-            .call(function(){playing[5]=false; stage.removeChild(Animation5A_container)});
+            .call(function(){stage.removeChild(Animation5A_container)});
     }
 }
 
@@ -349,10 +349,10 @@ function tween5B() {
         var random_y = Math.random() * (y_upper_bound - y_lower_bound) + y_lower_bound;
         createjs.Tween.get(anim5B_circles[j], {loop: false})
             .to({x: x1, y: y1}, 0)
-            .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
-            .wait(250)
+            .to({x: random_x, y: random_y}, 200, createjs.Ease.quartInOut)
+            .wait(200)
             .to({x: x1, y: y1}, 0)
-            .call(function(){playing[5]=false; stage.removeChild(Animation5B_container)});
+            .call(function(){stage.removeChild(Animation5B_container)});
     }    
 }
 
@@ -394,10 +394,10 @@ function tween6A() {
         var random_y = Math.random() * (y_upper_bound - y_lower_bound) + y_lower_bound;
         createjs.Tween.get(anim6A_circles[j], {loop: false})
             .to({x: x1, y: y1}, 0)
-            .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
-            .wait(250)
+            .to({x: random_x, y: random_y}, 200, createjs.Ease.quartInOut)
+            .wait(200)
             .to({x:x1,y:y1},0)
-            .call(function(){playing[6]=false; stage.removeChild(Animation6A_container)});
+            .call(function(){stage.removeChild(Animation6A_container)});
     }
 }
 
@@ -444,16 +444,16 @@ function tween6B() {
         var random_y = Math.random() * (y_upper_bound - y_lower_bound) + y_lower_bound;
         createjs.Tween.get(anim6B_circles[j], {loop: false})
             .to({x: x1, y: y1}, 0)
-            .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
-            .wait(250)
+            .to({x: random_x, y: random_y}, 200, createjs.Ease.quartInOut)
+            .wait(200)
             .to({x: x1, y: y1}, 0)
-            .call(function(){playing[6]=false; stage.removeChild(Animation6B_container)});
+            .call(function(){stage.removeChild(Animation6B_container)});
     }    
 }
 
 function shape7A() {
     var g1 = new createjs.Graphics();
-    g1.beginFill("rgb(62, 86, 255)").drawEllipse(0, 0, cx, 3*cy/2);
+    g1.beginFill("rgb(239, 217, 206)").drawEllipse(0, 0, cx, 3*cy/2);
     
     anim7A_polygon = new createjs.Shape(g1).set({regX:cx/2, regY: (3*cy/2)/2, x: cx, y: h});
 
@@ -464,14 +464,14 @@ function shape7A() {
 function tween7A() {
     stage.addChild(Animation7A_container);    
     createjs.Tween.get(anim7A_polygon, {loop: false})
-        .to({rotation: 90}, 1000)
+        .to({rotation: 90}, 900)
         .to({rotation: -90}, 0)
-        .call(function(){playing[7]=false; stage.removeChild(Animation7A_container)});
+        .call(function(){stage.removeChild(Animation7A_container)});
 }
 
 function shape7B() {
     var g1 = new createjs.Graphics();
-    g1.beginFill("rgb(255, 190, 180)").drawEllipse(0, 0, cx, 3*cy/2);    
+    g1.beginFill("rgb(222, 192, 241)").drawEllipse(0, 0, cx, 3*cy/2);    
     
     anim7B_polygon = new createjs.Shape(g1).set({regX:cx/2, regY: (3*cy/2)/2, x: cx, y: h});    
 
@@ -482,9 +482,9 @@ function shape7B() {
 function tween7B() {
     stage.addChild(Animation7B_container);    
     createjs.Tween.get(anim7B_polygon, {loop: false})
-        .to({rotation: -90}, 1000)
+        .to({rotation: -90}, 900)
         .to({rotation: 90}, 0)
-        .call(function(){playing[7]=false; stage.removeChild(Animation7B_container)});
+        .call(function(){stage.removeChild(Animation7B_container)});
 }
 
 function shape8A()
@@ -501,12 +501,13 @@ function shape8A()
 
 function tween8A() {
     stage.addChild(Animation8A_container); 
+    stage.setChildIndex(Animation8A_container, 1);
 
     createjs.Tween.get(anim8A_s, {loop:false})
-        .to({y:0, rotation: -25}, 800, createjs.Ease.quartInOut)
-        .to({y:-3/4*h, rotation: -50}, 900, createjs.Ease.quartInOut)
+        .to({y:0, rotation: -25}, 600, createjs.Ease.quartInOut)
+        .to({y:-3/4*h, rotation: -50}, 700, createjs.Ease.quartInOut)
         .to({x:w/2, y:-4/5*h, rotation: 0}, 0)
-        .call(function(){playing[8]=false; stage.removeChild(Animation8A_container)});
+        .call(function(){stage.removeChild(Animation8A_container)});
 }
 
 function shape8B()
@@ -523,12 +524,13 @@ function shape8B()
 
 function tween8B() {
     stage.addChild(Animation8B_container);
+    stage.setChildIndex(Animation8B_container, 1);
 
     createjs.Tween.get(anim8B_s, {loop:false})
-        .to({y:0, rotation: -25}, 800, createjs.Ease.quartInOut)
-        .to({y:-3/4*h, rotation: -50}, 900, createjs.Ease.quartInOut)
+        .to({y:0, rotation: -25}, 600, createjs.Ease.quartInOut)
+        .to({y:-3/4*h, rotation: -50}, 700, createjs.Ease.quartInOut)
         .to({x:w/2, y:-4/5*h, rotation: 0}, 0)
-        .call(function(){playing[8]=false; stage.removeChild(Animation8B_container)});
+        .call(function(){stage.removeChild(Animation8B_container)});
 }
 
 function shapebutton() {
@@ -621,9 +623,7 @@ function handleKeyDown(event) {
 }
 
 function showAnimation(num) {
-    if ((! playing[num]) && (! in_start_page)) {
-        
-        playing[num] = true;
+    if (! in_start_page) {
 
         var mode = Math.random() < 0.5;
         switch (num) {
@@ -792,8 +792,6 @@ function handleComplete() {
     create_start_page();
 
     createAnimation();
-    
-    playing = new Array(false,false,false,false,false,false,false,false,false);
     
     createjs.Ticker.setFPS(60);
 
