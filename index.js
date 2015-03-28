@@ -11,7 +11,6 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   socket.on('animationNum', function(num){
-  	console.log(num);
     io.emit('animationNum', num);
   });
 });

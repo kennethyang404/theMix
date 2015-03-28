@@ -542,7 +542,7 @@ function shapebutton() {
 
 function tweenbutton() {
     createjs.Tween.get(button, {loop:false})
-        .to({alpha: 0.8, visible: true}, 0)
+        .to({alpha: 1, visible: true}, 0)
         .to({alpha: 0, visible: false}, 1000);
 }
 
@@ -686,19 +686,18 @@ function showAnimation(num) {
 function handleMouseDown(event) {
     touchnum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
     socket.emit('animationNum', touchnum);
-
-    button.x = Math.floor(stage.mouseX/(w/2))*(w/2)+w/4;
-    button.y = Math.floor(stage.mouseY/(h/4))*(h/4)+h/8;
+    button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
+    button.y = Math.floor(stage.mouseY/(h/4))*(h/4);
     
     tweenbutton();
 }
 
 function handleMouseMove(event){
-    var movenum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
-    if (movenum != touchnum) {
+    if (movenum != (Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1)) {
+        movenum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
         socket.emit('animationNum', movenum);
-        button.x = Math.floor(stage.mouseX/(w/2))*(w/2)+w/4;
-        button.y = Math.floor(stage.mouseY/(h/4))*(h/4)+h/8;
+        button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
+        button.y = Math.floor(stage.mouseY/(h/4))*(h/4);
         tweenbutton();
     }
 }
