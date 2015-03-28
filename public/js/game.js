@@ -212,10 +212,13 @@ function tween3B() {
 }
 
 function shape4A() {
-    var g1 = new createjs.Graphics();
-        g1.beginFill("rgb(255, 128, 0)").drawRect(0,0, w/40, 2*h);
-    
-    anim4A_l1 = new createjs.Shape(g1).set({x:0, y:0});    
+    var g = new createjs.Graphics();
+    g.setStrokeStyle(30).beginStroke("rgb(255,128,0)");
+    g.moveTo(0,0);
+    g.lineTo(cx,cy);
+    g.endStroke();
+
+    anim4A_l1 = new createjs.Shape(g).set({x:-cx,y:-cy});  
 
     Animation4A_container = new createjs.Container();
     Animation4A_container.addChild(anim4A_l1);
@@ -225,19 +228,20 @@ function tween4A() {
     stage.addChild(Animation4A_container);
 
     createjs.Tween.get(anim4A_l1, {loop: false})
-        .to({x:0, y:0}, 0)
-        .to({scaleY: 0}, 0)   
-        .to({rotation: -45}, 0)
-        .to({scaleY: 1}, 300, createjs.Ease.linear)
-        .to({x:2*w, y:2*h}, 300, createjs.Ease.linear)
+        .to({scaleX:1, scaleY: 1}, 50, createjs.Ease.linear)
+        .to({x:w+cx, y:h+cy}, 200, createjs.Ease.linear)
+        .to({x:-cx, y:-cy}, 0)
         .call(function(){playing[4]=false; stage.removeChild(Animation4A_container)});
 }
 
 function shape4B() {
-    var g1 = new createjs.Graphics();
-        g1.beginFill("rgb(255, 128, 0)").drawRect(0,0, w/40, 2*h);
+    var g = new createjs.Graphics();
+    g.setStrokeStyle(30).beginStroke("rgb(255,128,0)");
+    g.moveTo(0,0);
+    g.lineTo(cx,cy);
+    g.endStroke();
     
-    anim4B_l1 = new createjs.Shape(g1).set({x:w, y:0});    
+    anim4B_l1 = new createjs.Shape(g).set({x:w+cx,y:h+cy});  
 
     Animation4B_container = new createjs.Container();
     Animation4B_container.addChild(anim4B_l1);
@@ -247,11 +251,9 @@ function tween4B() {
     stage.addChild(Animation4B_container);    
 
     createjs.Tween.get(anim4B_l1, {loop: false})
-        .to({x:w, y:0}, 0)
-        .to({scaleY: 0}, 0)   
-        .to({rotation: 225}, 0)
-        .to({scaleY: 1}, 300, createjs.Ease.linear)
-        .to({x:-w, y:2*h}, 300, createjs.Ease.linear)
+        .to({scaleX:1, scaleY: 1}, 50, createjs.Ease.linear)
+        .to({x:-cx, y:-cy}, 200, createjs.Ease.linear)
+        .to({x:w+cx, y:h+cy}, 0)
         .call(function(){playing[4]=false; stage.removeChild(Animation4B_container)});   
 }
 
