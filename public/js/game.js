@@ -10,15 +10,16 @@ function init() {
     canvas.height = window.innerHeight;
 
     stage = new createjs.Stage("easel");
-    
-    createjs.Touch.enable(stage);
-    
-    this.document.onkeydown = handleKeyDown;
 
     w = stage.canvas.width;
     h = stage.canvas.height;
     cx = w/2;
     cy = h/2;
+
+    stage.addEventListener("stagemousedown", handleMouseDown);
+    stage.addEventListener("stagemousemove", handleMouseMove);
+    createjs.Touch.enable(stage);    
+    this.document.onkeydown = handleKeyDown;
 
     var assetsPath = "../audio/";
     var sounds = [
@@ -523,13 +524,26 @@ function shape8B()
 }
 
 function tween8B() {
-    stage.addChild(Animation8B_container); 
+    stage.addChild(Animation8B_container);
 
     createjs.Tween.get(anim8B_s, {loop:false})
         .to({y:0, rotation: -25}, 800, createjs.Ease.quartInOut)
         .to({y:-3/4*h, rotation: -50}, 900, createjs.Ease.quartInOut)
         .to({x:w/2, y:-4/5*h, rotation: 0}, 0)
         .call(function(){stage.removeChild(Animation8B_container)});
+}
+
+function shapebutton() {
+    button = new createjs.Shape();
+    button.graphics.f("Gray").dr(0, 0, w/2, h/4);
+    button.visible = false;
+    stage.addChild(button);
+}
+
+function tweenbutton() {
+    createjs.Tween.get(button, {loop:false})
+        .to({alpha: 0.8, visible: true}, 0)
+        .to({alpha: 0, visible: false}, 1000);
 }
 
 function createAnimation() {
@@ -549,6 +563,7 @@ function createAnimation() {
     shape7B();
     shape8A();
     shape8B();
+    shapebutton();
 }
 
 function handleKeyDown(event) {
@@ -604,7 +619,6 @@ function handleKeyDown(event) {
 }
 
 function showAnimation(num) {
-    console.log("receive ",num);
     var mode = Math.random() < 0.5;
     switch (num) {
         case 1:
@@ -669,8 +683,27 @@ function showAnimation(num) {
     createjs.Sound.play("audio"+num);
 }
 
-function handleComplete() {
+function handleMouseDown(event) {
+    touchnum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
+    socket.emit('animationNum', touchnum);
 
+    button.x = Math.floor(stage.mouseX/(w/2))*(w/2)+w/4;
+    button.y = Math.floor(stage.mouseY/(h/4))*(h/4)+h/8;
+    
+    tweenbutton();
+}
+
+function handleMouseMove(event){
+    var movenum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
+    if (movenum != touchnum) {
+        socket.emit('animationNum', movenum);
+        button.x = Math.floor(stage.mouseX/(w/2))*(w/2)+w/4;
+        button.y = Math.floor(stage.mouseY/(h/4))*(h/4)+h/8;
+        tweenbutton();
+    }
+}
+
+function handleComplete() {
     createAnimation();
     
     createjs.Ticker.setFPS(60);
