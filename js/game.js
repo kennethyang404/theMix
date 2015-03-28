@@ -25,43 +25,82 @@ function init() {
     loader.loadManifest(manifest, true, "audio/");
 }
 
-function animation1() {
-    var circle = new createjs.Shape();
+function animation1A() {
+    var c1  = new createjs.Shape();
+    var c2 = new createjs.Shape();
+
+    c1.graphics.f("Crimson").dc(0, 0, 50);
+    c2.graphics.f("Green").dc(0, 0, 50);
+
+    c1.x = cx;
+    c1.y = cy;
     
-    circle.graphics.beginFill("Crimson").drawCircle(0, 0, 50);
-    circle.x = cx-200;
-    circle.y = cy;
+    c2.x = cx;
+    c2.y = cy;
 
-    stage.addChild(circle); 
+    var Animation1A_container = new createjs.Container();
+    Animation1A_container.addChild(c1, c2);
 
-    createjs.Tween.get(circle, {loop: false})
-        .to({x: cx+200}, 1000, createjs.Ease.getPowInOut(4))
-        .to({alpha: 0, y: cy-25}, 500, createjs.Ease.getPowInOut(2))
-        .to({alpha: 0, y: cy+25}, 100)
-        .to({alpha: 1, y: cy}, 500, createjs.Ease.getPowInOut(2))
-        .to({x: cx-200}, 800, createjs.Ease.getPowInOut(2));    
+    stage.addChild(Animation1A_container);
+
+    createjs.Tween.get(c1, {loop: true})
+        .to({alpha: 1, x: cx-150}, 250, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
+
+    createjs.Tween.get(c2, {loop: true})
+        .to({alpha: 1, x: cx+150}, 250, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
 }
 
-function animation2() {}
+function animation1B() {
+    var c1  = new createjs.Shape();
+    var c2 = new createjs.Shape();
 
-function animation3() {}
+    c1.graphics.f("Green").dc(0, 0, 50);
+    c2.graphics.f("Crimson").dc(0, 0, 50);
 
-function animation4() {}
+    c1.x = cx;
+    c1.y = cy;
+    
+    c2.x = cx;
+    c2.y = cy;
 
-function animation5() {}
+    var Animation1B_container = new createjs.Container();
+    Animation1B_container.addChild(c1, c2);
+
+    createjs.Tween.get(c1, {loop: true})
+        .to({alpha: 1, x: cx-150}, 250, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
+
+    createjs.Tween.get(c2, {loop: true})
+        .to({alpha: 1, x: cx+150}, 250, createjs.Ease.quartOut)
+        .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
+}
 
 function createAnimation() {
-    animation1();
-    animation2();
-    animation3();
-    animation4();
-    animation5();
+    animation1A();
+    animation1B();
+//    animation2A();
+//    animation2B();
+//    animation3A();
+//    animation3B();
+//    animation4A();
+//    animation4B();
+//    animation5A();
+//    animation5B();
+//    animation6A();
+//    animation6B();
+//    animation7A();
+//    animation7B();
+//    animation8A();
+//    animation8B();
 }
 
 function handleComplete() {
 
     createAnimation();
     
+
     createjs.Ticker.setFPS(60);
 
     //stage.addEventListener("stagemousedown", handleJump);
