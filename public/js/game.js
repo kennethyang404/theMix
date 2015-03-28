@@ -16,12 +16,7 @@ function init() {
     cx = w/2;
     cy = h/2;
 
-    stage.addEventListener("stagemousedown", handleMouseDown);
-    stage.addEventListener("stagemousemove", handleMouseMove);
-    createjs.Touch.enable(stage);    
-    this.document.onkeydown = handleKeyDown;
-
-    var assetsPath = "../audio/";
+    var assetsPath = "../audio/"
     var sounds = [
         {src: "1.mp3", id: "audio1"},
         {src: "2.mp3", id: "audio2"},
@@ -33,8 +28,9 @@ function init() {
         {src: "8.mp3", id: "audio8"}
     ];
 
-    createjs.Sound.on("fileload", handleComplete);
-    createjs.Sound.registerSounds(sounds, assetsPath);
+    loader = new createjs.LoadQueue(false);
+    loader.addEventListener("complete", function(){createjs.Sound.registerSounds(sounds, assetsPath); handleComplete()});
+    loader.loadManifest(sounds, true, assetsPath);
 }
 
 function shape1A() {
@@ -64,7 +60,7 @@ function tween1A() {
     createjs.Tween.get(anim1A_c2, {loop: false})
         .to({alpha: 1, x: cx+150}, 250, createjs.Ease.quartOut)
         .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn)
-        .call(function(){stage.removeChild(Animation1A_container)});
+        .call(function(){playing[1]=false; stage.removeChild(Animation1A_container)});
 }
 
 function shape1B() {
@@ -94,7 +90,7 @@ function tween1B() {
     createjs.Tween.get(anim1B_c2, {loop: false})
         .to({alpha: 1, x: cx+150}, 250, createjs.Ease.quartOut)
         .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn)
-        .call(function(){stage.removeChild(Animation1B_container)});
+        .call(function(){playing[1]=false; stage.removeChild(Animation1B_container)});
 }
 
 function shape2A() {
@@ -116,7 +112,7 @@ function tween2A() {
         .to({scaleX: 0.01, scaleY: 0.01}, 1)
         .to({scaleX: 1, scaleY: 1}, 250, createjs.Ease.quartOut)
         .to({scaleX: 0.001, scaleY: 0.001}, 250, createjs.Ease.quartIn)
-        .call(function(){stage.removeChild(Animation2A_container)});
+        .call(function(){playing[2]=false; stage.removeChild(Animation2A_container)});
 }
 
 function shape2B() {
@@ -138,7 +134,7 @@ function tween2B() {
         .to({scaleX: 0.01, scaleY: 0.01}, 1)
         .to({scaleX: 1, scaleY: 1}, 250, createjs.Ease.quartOut)
         .to({scaleX: 0.001, scaleY: 0.001}, 250, createjs.Ease.quartIn)
-        .call(function(){stage.removeChild(Animation2B_container)});
+        .call(function(){playing[2]=false; stage.removeChild(Animation2B_container)});
 }
 
 function shape3A() {
@@ -175,7 +171,7 @@ function tween3A() {
         .to({scaleY: 0}, 0)
         .to({scaleY: 1}, 250, createjs.Ease.linear)
         .to({y:2*h}, 250, createjs.Ease.linear)
-        .call(function(){stage.removeChild(Animation3A_container)});    
+        .call(function(){playing[3]=false; stage.removeChild(Animation3A_container)});    
 }
 
 function shape3B() {
@@ -212,7 +208,7 @@ function tween3B() {
         .to({scaleY: 0}, 0)
         .to({scaleY: -1}, 250, createjs.Ease.linear)
         .to({y:0}, 250, createjs.Ease.linear)
-        .call(function(){stage.removeChild(Animation3B_container)});
+        .call(function(){playing[3]=false; stage.removeChild(Animation3B_container)});
 }
 
 function shape4A() {
@@ -234,7 +230,7 @@ function tween4A() {
         .to({rotation: -45}, 0)
         .to({scaleY: 1}, 300, createjs.Ease.linear)
         .to({x:2*w, y:2*h}, 300, createjs.Ease.linear)
-        .call(function(){stage.removeChild(Animation4A_container)});
+        .call(function(){playing[4]=false; stage.removeChild(Animation4A_container)});
 }
 
 function shape4B() {
@@ -256,7 +252,7 @@ function tween4B() {
         .to({rotation: 225}, 0)
         .to({scaleY: 1}, 300, createjs.Ease.linear)
         .to({x:-w, y:2*h}, 300, createjs.Ease.linear)
-        .call(function(){stage.removeChild(Animation4B_container)});   
+        .call(function(){playing[4]=false; stage.removeChild(Animation4B_container)});   
 }
 
 function shape5A() {
@@ -298,7 +294,7 @@ function tween5A() {
             .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
             .wait(250)
             .to({x:x1,y:y1},0)
-            .call(function(){stage.removeChild(Animation5A_container)});
+            .call(function(){playing[5]=false; stage.removeChild(Animation5A_container)});
     }
 }
 
@@ -346,7 +342,7 @@ function tween5B() {
             .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
             .wait(250)
             .to({x: x1, y: y1}, 0)
-            .call(function(){stage.removeChild(Animation5B_container)});
+            .call(function(){playing[5]=false; stage.removeChild(Animation5B_container)});
     }    
 }
 
@@ -391,7 +387,7 @@ function tween6A() {
             .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
             .wait(250)
             .to({x:x1,y:y1},0)
-            .call(function(){stage.removeChild(Animation6A_container)});
+            .call(function(){playing[6]=false; stage.removeChild(Animation6A_container)});
     }
 }
 
@@ -441,18 +437,15 @@ function tween6B() {
             .to({x: random_x, y: random_y}, 250, createjs.Ease.quartInOut)
             .wait(250)
             .to({x: x1, y: y1}, 0)
-            .call(function(){stage.removeChild(Animation6B_container)});
+            .call(function(){playing[6]=false; stage.removeChild(Animation6B_container)});
     }    
 }
 
 function shape7A() {
-    var graphics = new createjs.Graphics();
-    graphics.beginFill("rgb(62, 86, 255)").bezierCurveTo(0, 0, 0, h/3, w/4, h/4);
-    graphics.bezierCurveTo(3*w/4, 0, w/2, h/3, w, h/4);
-    graphics.bezierCurveTo(3*h, w/2, h, h/2, w, 0.0);
-    graphics.bezierCurveTo(w/3, 0, -h, -h, 1, w);;
+    var g1 = new createjs.Graphics();
+    g1.beginFill("rgb(62, 86, 255)").drawEllipse(0, 0, cx, 3*cy/2);
     
-    anim7A_polygon = new createjs.Shape(graphics);
+    anim7A_polygon = new createjs.Shape(g1).set({regX:cx/2, regY: (3*cy/2)/2, x: cx, y: h});
 
     Animation7A_container = new createjs.Container();
     Animation7A_container.addChild(anim7A_polygon);
@@ -460,21 +453,17 @@ function shape7A() {
 
 function tween7A() {
     stage.addChild(Animation7A_container);    
-    
-    createjs.Tween.get(anim7A_polygon, {loop: true})
-        .to({x:0, y:0})
-        .to({scaleX: 2, scaleY: 2, rotation: 480}, 2000, createjs.Ease.quartIn)
-        .call(function(){stage.removeChild(Animation7A_container)});
+    createjs.Tween.get(anim7A_polygon, {loop: false})
+        .to({rotation: 90}, 1000)
+        .to({rotation: -90}, 0)
+        .call(function(){playing[7]=false; stage.removeChild(Animation7A_container)});
 }
 
 function shape7B() {
-    var graphics = new createjs.Graphics();
-    graphics.beginFill("rgb(255, 190, 180)").bezierCurveTo(0, 0, 0, h/3, w/4, h/4);
-    graphics.bezierCurveTo(3*w/4, 0, w/2, h/3, w, h/4);
-    graphics.bezierCurveTo(3*h, w/2, h, h/2, w, 0.0);
-    graphics.bezierCurveTo(w/3, 0, -h, -h, 0, w);;
+    var g1 = new createjs.Graphics();
+    g1.beginFill("rgb(255, 190, 180)").drawEllipse(0, 0, cx, 3*cy/2);    
     
-    anim7B_polygon = new createjs.Shape(graphics);
+    anim7B_polygon = new createjs.Shape(g1).set({regX:cx/2, regY: (3*cy/2)/2, x: cx, y: h});    
 
     Animation7B_container = new createjs.Container();
     Animation7B_container.addChild(anim7B_polygon);
@@ -482,11 +471,10 @@ function shape7B() {
 
 function tween7B() {
     stage.addChild(Animation7B_container);    
-    
-    createjs.Tween.get(anim7B_polygon, {loop: true})
-        .to({x:0, y:0})
-        .to({scaleX: 2, scaleY: 2, rotation: -480}, 2000, createjs.Ease.quartIn)
-        .call(function(){stage.removeChild(Animation7B_container)});
+    createjs.Tween.get(anim7B_polygon, {loop: false})
+        .to({rotation: -90}, 1000)
+        .to({rotation: 90}, 0)
+        .call(function(){playing[7]=false; stage.removeChild(Animation7B_container)});
 }
 
 function shape8A()
@@ -508,7 +496,7 @@ function tween8A() {
         .to({y:0, rotation: -25}, 800, createjs.Ease.quartInOut)
         .to({y:-3/4*h, rotation: -50}, 900, createjs.Ease.quartInOut)
         .to({x:w/2, y:-4/5*h, rotation: 0}, 0)
-        .call(function(){stage.removeChild(Animation8A_container)});
+        .call(function(){playing[8]=false; stage.removeChild(Animation8A_container)});
 }
 
 function shape8B()
@@ -530,7 +518,7 @@ function tween8B() {
         .to({y:0, rotation: -25}, 800, createjs.Ease.quartInOut)
         .to({y:-3/4*h, rotation: -50}, 900, createjs.Ease.quartInOut)
         .to({x:w/2, y:-4/5*h, rotation: 0}, 0)
-        .call(function(){stage.removeChild(Animation8B_container)});
+        .call(function(){playing[8]=false; stage.removeChild(Animation8B_container)});
 }
 
 function shapebutton() {
@@ -619,93 +607,187 @@ function handleKeyDown(event) {
 }
 
 function showAnimation(num) {
-    var mode = Math.random() < 0.5;
-    switch (num) {
-        case 1:
-            if (mode) {
-                tween1A();
-            } else {
-                tween1B();
-            }
-            break;
+    if (! playing[num]) {
+        
+        playing[num] = true;
 
-        case 2:
-            if (mode) {
-                tween2A();
-            } else {
-                tween2B();
-            }
-            break;
+        var mode = Math.random() < 0.5;
+        switch (num) {
+            case 1:
+                if (mode) {
+                    tween1A();
+                } else {
+                    tween1B();
+                }
+                break;
 
-        case 3:
-            if (mode) {
-                tween3A();
-            } else {
-                tween3B();
-            }
-            break;   
-        case 4:
-            if (mode) {
-                tween4A();
-            } else {
-                tween4B();
-            }
-            break;
-        case 5:
-            if (mode) {
-                tween5A();
-            } else {
-                tween5B();
-            }
-            break; 
-        case 6:
-            if (mode) {
-                tween6A();
-            } else {
-                tween6B();
-            }
-            break;
-        case 7:
-            if (mode) {
-                tween7A();
-            } else {
-                tween7B();
-            }
-            break;
-        case 8:
-            if (mode) {
-                tween8A();
-            } else {
-                tween8B();
-            }
-            break;           
+            case 2:
+                if (mode) {
+                    tween2A();
+                } else {
+                    tween2B();
+                }
+                break;
+
+            case 3:
+                if (mode) {
+                    tween3A();
+                } else {
+                    tween3B();
+                }
+                break;   
+            case 4:
+                if (mode) {
+                    tween4A();
+                } else {
+                    tween4B();
+                }
+                break;
+            case 5:
+                if (mode) {
+                    tween5A();
+                } else {
+                    tween5B();
+                }
+                break; 
+            case 6:
+                if (mode) {
+                    tween6A();
+                } else {
+                    tween6B();
+                }
+                break;
+            case 7:
+                if (mode) {
+                    tween7A();
+                } else {
+                    tween7B();
+                }
+                break;
+            case 8:
+                if (mode) {
+                    tween8A();
+                } else {
+                    tween8B();
+                }
+                break;           
+        }
+        createjs.Sound.play("audio"+num);
     }
-    createjs.Sound.play("audio"+num);
 }
 
 function handleMouseDown(event) {
-    touchnum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
-    lastmovenum = touchnum;
-    socket.emit('animationNum', touchnum);
-    button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
-    button.y = Math.floor(stage.mouseY/(h/4))*(h/4);
-    
-    tweenbutton();
-}
-
-function handleMouseMove(event){
-    var currentmovenum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
-    if (lastmovenum != currentmovenum) {
-        lastmovenum = currentmovenum;
-        socket.emit('animationNum', lastmovenum);
+    if (in_start_page) {
+        tweenstart();
+    } else {
+        touchnum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
+        lastmovenum = touchnum;
+        socket.emit('animationNum', touchnum);
         button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
         button.y = Math.floor(stage.mouseY/(h/4))*(h/4);
         tweenbutton();
     }
 }
 
+function handleMouseMove(event){
+    if (! in_start_page) {
+        var currentmovenum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
+        if (lastmovenum != currentmovenum) {
+            lastmovenum = currentmovenum;
+            socket.emit('animationNum', lastmovenum);
+            button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
+            button.y = Math.floor(stage.mouseY/(h/4))*(h/4);
+            tweenbutton();
+        }
+    }
+}
+
+function create_start_page() {
+
+    if (h > w) {
+        var ww = w/1.4;
+        var hh = ww*0.4;
+        var size1 = h/25;
+        var size2 = h/50;
+    } else {
+        var hh = h/3;
+        var ww = hh/0.4;
+        var size1 = w/20;
+        var size2 = w/50;
+    }
+
+    var g1 = new createjs.Graphics();
+    g1.f("#e76249");
+    g1.s("#e76249").mt(0,0).lt(0,hh).lt(ww,0).lt(0,0).closePath();
+
+    upper_tri = new createjs.Shape(g1).set({x:cx-ww/2, y:cy-hh/2-hh/4});
+
+    var g2 = new createjs.Graphics();
+    g2.f("#d55a43");
+    g2.s("#d55a43").mt(0,0).lt(-ww,0).lt(0,-hh).lt(0,0).closePath();
+
+    lower_tri = new createjs.Shape(g2).set({x:cx+ww/2, y:cy+hh/2-hh/4});
+
+    var g3 = new createjs.Graphics();
+    g3.f("White");
+    g3.s("White").mt(0,0).lt(ww,0).lt(ww,hh/2).lt(0,hh/2).closePath();
+
+    lower_rec = new createjs.Shape(g3).set({x:cx-ww/2, y:cy+hh/2-hh/4});
+
+    var n = size1.toString();
+    text1 = new createjs.Text("The MIX", n.concat("px Helvetica"), "White");
+    text1.x = cx;
+    text1.y = cy-hh/4-hh/8;
+    text1.textAlign = "center";
+
+    var n = size2.toString();
+    text2 = new createjs.Text("Turn up the speaker and touch anywhere", n.concat("px Helvetica"), "#d55a43");
+    text2.x = cx;
+    text2.y = cy+hh/2-hh/16;
+    text2.textAlign = "center";
+
+    stage.addChild(upper_tri,lower_tri,lower_rec,text1,text2);
+
+    in_start_page = true;
+    lastmovenum = 0;
+}
+
+function tweenstart() {
+    stage.removeChild(text1, text2);
+
+    var xx=upper_tri.x;
+    var yy=upper_tri.y;
+    createjs.Tween.get(upper_tri, {loop:false})
+        .to({x: xx-50, alpha: 0}, 800)
+        .call(function(){stage.removeChild(upper_tri)});
+
+    xx=lower_tri.x;
+    yy=lower_tri.y;
+    createjs.Tween.get(lower_tri, {loop:false})
+        .to({x: xx+50, alpha: 0}, 800)
+        .call(function(){stage.removeChild(lower_tri)});
+
+    xx=lower_rec.x;
+    yy=lower_rec.y;
+    createjs.Tween.get(lower_rec, {loop:false})
+        .to({y: yy+50, alpha: 0}, 800)
+        .call(function(){stage.removeChild(lower_rec)});
+
+    in_start_page = false;
+}
+
 function handleComplete() {
+
+    create_start_page();
+
     createAnimation();
+    
+    playing = new Array(false,false,false,false,false,false,false,false,false);
+
+    stage.addEventListener("stagemousedown", handleMouseDown);
+    stage.addEventListener("stagemousemove", handleMouseMove);
+    createjs.Touch.enable(stage);
+    document.onkeydown = handleKeyDown;
     
     createjs.Ticker.setFPS(60);
 
