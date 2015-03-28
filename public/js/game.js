@@ -20,7 +20,8 @@ function init() {
     cx = w/2;
     cy = h/2;
 
-    manifest = [
+    var assetsPath = "../audio/";
+    var sounds = [
         {src: "1.mp3", id: "audio1"},
         {src: "2.mp3", id: "audio2"},
         {src: "3.mp3", id: "audio3"},
@@ -31,9 +32,8 @@ function init() {
         {src: "8.mp3", id: "audio8"}
     ];
 
-    loader = new createjs.LoadQueue(false);
-    loader.addEventListener("complete", handleComplete);
-    loader.loadManifest(manifest, true, "audio/");
+    createjs.Sound.on("fileload", handleComplete);
+    createjs.Sound.registerSounds(sounds, assetsPath);
 }
 
 function shape1A() {
@@ -664,6 +664,7 @@ function showAnimation(num) {
             }
             break;           
     }
+    createjs.Sound.play("audio"+num);
 }
 
 function handleComplete() {
