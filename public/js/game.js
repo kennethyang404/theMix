@@ -685,6 +685,7 @@ function showAnimation(num) {
 
 function handleMouseDown(event) {
     touchnum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
+    lastmovenum = touchnum;
     socket.emit('animationNum', touchnum);
     button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
     button.y = Math.floor(stage.mouseY/(h/4))*(h/4);
@@ -693,9 +694,10 @@ function handleMouseDown(event) {
 }
 
 function handleMouseMove(event){
-    if (movenum != (Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1)) {
-        movenum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
-        socket.emit('animationNum', movenum);
+    var currentmovenum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
+    if (lastmovenum != currentmovenum) {
+        lastmovenum = currentmovenum;
+        socket.emit('animationNum', lastmovenum);
         button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
         button.y = Math.floor(stage.mouseY/(h/4))*(h/4);
         tweenbutton();
