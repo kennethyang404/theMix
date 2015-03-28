@@ -16,6 +16,14 @@ function init() {
     cx = w/2;
     cy = h/2;
 
+
+    in_start_page = true;
+    lastmovenum = 0;
+    stage.addEventListener("stagemousedown", handleMouseDown);
+    stage.addEventListener("stagemousemove", handleMouseMove);
+    createjs.Touch.enable(stage);
+    document.onkeydown = handleKeyDown;
+
     var assetsPath = "../audio/"
     var sounds = [
         {src: "1.mp3", id: "audio1"},
@@ -749,9 +757,6 @@ function create_start_page() {
     text2.textAlign = "center";
 
     stage.addChild(upper_tri,lower_tri,lower_rec,text1,text2);
-
-    in_start_page = true;
-    lastmovenum = 0;
 }
 
 function tweenstart() {
@@ -785,11 +790,6 @@ function handleComplete() {
     createAnimation();
     
     playing = new Array(false,false,false,false,false,false,false,false,false);
-
-    stage.addEventListener("stagemousedown", handleMouseDown);
-    stage.addEventListener("stagemousemove", handleMouseMove);
-    createjs.Touch.enable(stage);
-    document.onkeydown = handleKeyDown;
     
     createjs.Ticker.setFPS(60);
 
