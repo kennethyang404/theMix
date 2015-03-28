@@ -42,7 +42,7 @@ function shape1A() {
     anim1A_c2 = new createjs.Shape();
 
     anim1A_c1.graphics.f("Crimson").dc(0, 0, 50);
-    anim1A_c2.graphics.f("Green").dc(0, 0, 50);
+    anim1A_c2.graphics.f("DodgerBlue").dc(0, 0, 50);
 
     anim1A_c1.x = cx;
     anim1A_c1.y = cy;
@@ -71,7 +71,7 @@ function shape1B() {
     anim1B_c1 = new createjs.Shape();
     anim1B_c2 = new createjs.Shape();
 
-    anim1B_c1.graphics.f("Green").dc(0, 0, 50);
+    anim1B_c1.graphics.f("DodgerBlue").dc(0, 0, 50);
     anim1B_c2.graphics.f("Crimson").dc(0, 0, 50);
 
     anim1B_c1.x = cx;
@@ -100,8 +100,8 @@ function tween1B() {
 function shape2A() {
     var g = new createjs.Graphics();
     g.setStrokeStyle(0);
-    g.beginFill("Crimson");
-    g.beginStroke("Crimson").mt(0, -11.0/380*w).lt(42.0/380*w,-53.0/380*w).lt(w/4,0).lt(0,w/4).lt(-w/4,0).lt(-42.0/380*w,-53.0/380*w).closePath();
+    g.beginFill("rgb(255,93,93)");
+    g.beginStroke("rgb(255,93,93)").mt(0, -11.0/380*w).lt(42.0/380*w,-53.0/380*w).lt(w/4,0).lt(0,w/4).lt(-w/4,0).lt(-42.0/380*w,-53.0/380*w).closePath();
 
     anim2A_heart = new createjs.Shape(g).set({x:cx, y:cy});
 
@@ -122,8 +122,8 @@ function tween2A() {
 function shape2B() {
     var g = new createjs.Graphics();
     g.setStrokeStyle(0);
-    g.beginFill("Orange");
-    g.beginStroke("Orange").mt(0, -11.0/380*w).lt(42.0/380*w,-53.0/380*w).lt(w/4,0).lt(0,w/4).lt(-w/4,0).lt(-42.0/380*w,-53.0/380*w).closePath();
+    g.beginFill("rgb(208,0,28)");
+    g.beginStroke("rgb(208,0,28)").mt(0, -11.0/380*w).lt(42.0/380*w,-53.0/380*w).lt(w/4,0).lt(0,w/4).lt(-w/4,0).lt(-42.0/380*w,-53.0/380*w).closePath();
 
     anim2B_heart = new createjs.Shape(g).set({x:cx, y:cy});
 
@@ -469,7 +469,7 @@ function tween7A() {
 
 function shape7B() {
     var graphics = new createjs.Graphics();
-    graphics.beginFill("rgb(62, 86, 255)").bezierCurveTo(0, 0, 0, h/3, w/4, h/4);
+    graphics.beginFill("rgb(255, 190, 180)").bezierCurveTo(0, 0, 0, h/3, w/4, h/4);
     graphics.bezierCurveTo(3*w/4, 0, w/2, h/3, w, h/4);
     graphics.bezierCurveTo(3*h, w/2, h, h/2, w, 0.0);
     graphics.bezierCurveTo(w/3, 0, -h, -h, 0, w);;
@@ -492,8 +492,8 @@ function tween7B() {
 function shape8A()
 {
     var g = new createjs.Graphics();
-    g.f("#3E56FF");
-    g.s("#3E56FF").mt(-w/3*2,0).lt(-w/3*2,h/4).lt(0,h).lt(w/3*2,h/4).lt(w/3*2,-h).lt(-w/3*2,-h).lt(-w/3*2,0).closePath();
+    g.f("rgb(62, 86, 255)");
+    g.s("rgb(62, 86, 255)").mt(-w/3*2,0).lt(-w/3*2,h/4).lt(0,h).lt(w/3*2,h/4).lt(w/3*2,-h).lt(-w/3*2,-h).lt(-w/3*2,0).closePath();
 
     anim8A_s = new createjs.Shape(g).set({x:w/2, y:-4/5*h});
 
@@ -514,8 +514,8 @@ function tween8A() {
 function shape8B()
 {
     var g = new createjs.Graphics();
-    g.f("#FFBEB4");
-    g.s("#FFBEB4").mt(-w/3*2,0).lt(-w/3*2,h/4).lt(0,h).lt(w/3*2,h/4).lt(w/3*2,-h).lt(-w/3*2,-h).lt(-w/3*2,0).closePath();
+    g.f("rgb(255, 190, 180)");
+    g.s("rgb(255, 190, 180)").mt(-w/3*2,0).lt(-w/3*2,h/4).lt(0,h).lt(w/3*2,h/4).lt(w/3*2,-h).lt(-w/3*2,-h).lt(-w/3*2,0).closePath();
 
     anim8B_s = new createjs.Shape(g).set({x:w/2, y:-4/5*h});
 

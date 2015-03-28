@@ -3,5 +3,5 @@ body {
     overflow: hidden;
 }
 canvas {
-    background: #AAA;
+    background: rgb(128, 170, 220);
 }
