@@ -1,7 +1,7 @@
 {
   "name": "theMix",
   "version": "0.1.0",
-  "description": "A collaborative music creation tool",
+  "description": "A real-time multiplayer music creation tool",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

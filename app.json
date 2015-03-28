@@ -1,0 +1,6 @@
+{
+  "name": "theMix",
+  "description": "A real-time multiplayer music creation tool",
+  "repository": "https://github.com/kennethyang404/theMix",
+  "keywords": ["node", "express", "socket"]
+}
