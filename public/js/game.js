@@ -506,6 +506,7 @@ function tween8A() {
     createjs.Tween.get(anim8A_s, {loop:false})
         .to({y:0, rotation: -25}, 800, createjs.Ease.quartInOut)
         .to({y:-3/4*h, rotation: -50}, 900, createjs.Ease.quartInOut)
+        .to({x:w/2, y:-4/5*h, rotation: 0}, 0)
         .call(function(){stage.removeChild(Animation8A_container)});
 }
 
@@ -527,6 +528,7 @@ function tween8B() {
     createjs.Tween.get(anim8B_s, {loop:false})
         .to({y:0, rotation: -25}, 800, createjs.Ease.quartInOut)
         .to({y:-3/4*h, rotation: -50}, 900, createjs.Ease.quartInOut)
+        .to({x:w/2, y:-4/5*h, rotation: 0}, 0)
         .call(function(){stage.removeChild(Animation8B_container)});
 }
 
