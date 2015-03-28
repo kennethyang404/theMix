@@ -41,8 +41,6 @@ function animation1A() {
     var Animation1A_container = new createjs.Container();
     Animation1A_container.addChild(c1, c2);
 
-    stage.addChild(Animation1A_container);
-
     createjs.Tween.get(c1, {loop: true})
         .to({alpha: 1, x: cx-150}, 250, createjs.Ease.quartOut)
         .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
@@ -77,11 +75,47 @@ function animation1B() {
         .to({alpha: 0.5, x: cx}, 250, createjs.Ease.quartIn);
 }
 
+function animation2A() {
+    var g = new createjs.Graphics();
+    g.setStrokeStyle(0);
+    g.beginFill("Crimson");
+    g.beginStroke("Crimson").mt(0, -11.0/380*w).lt(42.0/380*w,-53.0/380*w).lt(w/4,0).lt(0,w/4).lt(-w/4,0).lt(-42.0/380*w,-53.0/380*w).closePath();
+
+    var heart = new createjs.Shape(g).set({x:cx, y:cy});
+
+    var Animation2A_container = new createjs.Container();
+    Animation2A_container.addChild(heart);
+
+    createjs.Tween.get(heart, {loop: true})
+        .to({scaleX: 0.01, scaleY: 0.01}, 1)
+        .to({scaleX: 1, scaleY: 1}, 250, createjs.Ease.quartOut)
+        .to({scaleX: 0.001, scaleY: 0.001}, 250, createjs.Ease.quartIn);
+}
+
+
+function animation2B() {
+    var g = new createjs.Graphics();
+    g.setStrokeStyle(0);
+    g.beginFill("orange");
+    g.beginStroke("orange").mt(0, -11.0/380*w).lt(42.0/380*w,-53.0/380*w).lt(w/4,0).lt(0,w/4).lt(-w/4,0).lt(-42.0/380*w,-53.0/380*w).closePath();
+
+    var heart = new createjs.Shape(g).set({x:cx, y:cy});
+
+    var Animation2A_container = new createjs.Container();
+    Animation2A_container.addChild(heart);
+    stage.addChild(Animation2A_container);
+
+    createjs.Tween.get(heart, {loop: true})
+        .to({scaleX: 0.01, scaleY: 0.01}, 1)
+        .to({scaleX: 1, scaleY: 1}, 250, createjs.Ease.quartOut)
+        .to({scaleX: 0.001, scaleY: 0.001}, 250, createjs.Ease.quartIn);
+}
+
 function createAnimation() {
     animation1A();
     animation1B();
-//    animation2A();
-//    animation2B();
+    animation2A();
+    animation2B();
 //    animation3A();
 //    animation3B();
 //    animation4A();
@@ -100,7 +134,6 @@ function handleComplete() {
 
     createAnimation();
     
-
     createjs.Ticker.setFPS(60);
 
     //stage.addEventListener("stagemousedown", handleJump);
