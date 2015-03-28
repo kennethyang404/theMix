@@ -565,59 +565,63 @@ function createAnimation() {
 }
 
 function handleKeyDown(event) {
-    switch (event.keyCode) {
-        case 81:  
-            // q
-            console.log("q pressed");
-            socket.emit('animationNum', 1);
-            break;
+    if (in_start_page) {
+        tweenstart();
+    } else {
+        switch (event.keyCode) {
+            case 81:  
+                // q
+                console.log("q pressed");
+                socket.emit('animationNum', 1);
+                break;
 
-        case 87:
-            // w
-            console.log("w pressed");
-            socket.emit('animationNum', 2);
-            break;
+            case 87:
+                // w
+                console.log("w pressed");
+                socket.emit('animationNum', 2);
+                break;
 
-        case 69:
-            // e
-            console.log("e pressed");
-            socket.emit('animationNum', 3);
-            break;
+            case 69:
+                // e
+                console.log("e pressed");
+                socket.emit('animationNum', 3);
+                break;
 
-        case 82:
-            // r
-            console.log("r pressed");
-            socket.emit('animationNum', 4);
-            break;
+            case 82:
+                // r
+                console.log("r pressed");
+                socket.emit('animationNum', 4);
+                break;
 
-        case 65:  
-            // a
-            console.log("a pressed");
-            socket.emit('animationNum', 5);
-            break;
+            case 65:  
+                // a
+                console.log("a pressed");
+                socket.emit('animationNum', 5);
+                break;
 
-        case 83:
-            // s
-            console.log("s pressed");
-            socket.emit('animationNum', 6);
-            break;
+            case 83:
+                // s
+                console.log("s pressed");
+                socket.emit('animationNum', 6);
+                break;
 
-        case 68:
-            // d
-            console.log("d pressed");
-            socket.emit('animationNum', 7);
-            break;
+            case 68:
+                // d
+                console.log("d pressed");
+                socket.emit('animationNum', 7);
+                break;
 
-        case 70:
-            // f
-            console.log("f pressed");
-            socket.emit('animationNum', 8);
-            break;
+            case 70:
+                // f
+                console.log("f pressed");
+                socket.emit('animationNum', 8);
+                break;
+        }
     }
 }
 
 function showAnimation(num) {
-    if (! playing[num]) {
+    if ((! playing[num]) && (! in_start_page)) {
         
         playing[num] = true;
 
