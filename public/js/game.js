@@ -38,6 +38,7 @@ function init() {
 
     in_start_page = true;
     lastmovenum = 0;
+    create_start_page();
     createjs.Touch.enable(stage);
     stage.addEventListener("stagemousedown", handleMouseDown);
     stage.addEventListener("stagemousemove", handleMouseMove);
@@ -808,7 +809,7 @@ function tweenstart() {
 
 function handleComplete() {
 
-    create_start_page();
+
 
     createAnimation();
     
