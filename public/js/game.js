@@ -31,6 +31,8 @@ function init() {
 
     stage = new createjs.Stage("easel");
 
+    createjs.Touch.enable(stage);
+
     w = stage.canvas.width;
     h = stage.canvas.height;
     cx = w/2;
@@ -52,8 +54,12 @@ function init() {
         {src: "8.mp3", id: "audio8"}
     ];
 
-    loader = new createjs.LoadQueue(false);
-    loader.addEventListener("complete", function(){createjs.Sound.registerSounds(sounds, assetsPath); handleComplete()});
+    loader = new createjs.LoadQueue(true);
+    loader.on("complete", function() {
+        createjs.Sound.initializeDefaultPlugins();
+        createjs.Sound.registerSounds(sounds, assetsPath);
+        handleComplete();
+    }, this);
     loader.loadManifest(sounds, true, assetsPath);
 }
 
@@ -812,7 +818,6 @@ function handleComplete() {
 
     createAnimation();
     
-    createjs.Touch.enable(stage);
     stage.addEventListener("stagemousedown", handleMouseDown);
     stage.addEventListener("stagemousemove", handleMouseMove);
     document.onkeydown = handleKeyDown;
