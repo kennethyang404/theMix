@@ -16,12 +16,12 @@ function init() {
     cx = w/2;
     cy = h/2;
 
-
     in_start_page = true;
     lastmovenum = 0;
+    create_start_page();
+    createjs.Touch.enable(stage);
     stage.addEventListener("stagemousedown", handleMouseDown);
     stage.addEventListener("stagemousemove", handleMouseMove);
-    createjs.Touch.enable(stage);
     document.onkeydown = handleKeyDown;
 
     var assetsPath = "../audio/"
@@ -788,8 +788,6 @@ function tweenstart() {
 }
 
 function handleComplete() {
-
-    create_start_page();
 
     createAnimation();
     
