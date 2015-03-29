@@ -1,3 +1,23 @@
+var socket, canvas, stage, w, h, cx, cy, in_start_page, lastmovenum, loader
+var anim1A_c1, anim1A_c2, Animation1A_container
+var anim1B_c1, anim1B_c2, Animation1B_container
+var anim2A_heart, Animation2A_container
+var anim2B_heart, Animation2B_container
+var anim3A_l1, anim3A_l2, anim3A_l3, Animation3A_container
+var anim3B_l1, anim3B_l2, anim3B_l3, Animation3B_container
+var anim4A_l1, Animation4A_container
+var anim4B_l1, Animation4B_container
+var anim5A_circles, Animation5A_container
+var anim5B_circles, Animation5B_container
+var anim6A_circles, Animation6A_container
+var anim6B_circles, Animation6B_container
+var anim7A_polygon, Animation7A_container
+var anim7B_polygon, Animation7B_container
+var anim8A_s, Animation8A_container
+var anim8B_s, Animation8B_container
+var button
+var upper_tri, lower_tri, lower_rec, text1, text2
+
 function init() {
 
     socket = io();
@@ -18,7 +38,6 @@ function init() {
 
     in_start_page = true;
     lastmovenum = 0;
-    create_start_page();
     createjs.Touch.enable(stage);
     stage.addEventListener("stagemousedown", handleMouseDown);
     stage.addEventListener("stagemousemove", handleMouseMove);
@@ -694,7 +713,7 @@ function handleMouseDown(event) {
     if (in_start_page) {
         tweenstart();
     } else {
-        touchnum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
+        var touchnum = Math.floor(stage.mouseY/(h/4)) * 2 + Math.floor(stage.mouseX/(w/2)) + 1;
         lastmovenum = touchnum;
         socket.emit('animationNum', touchnum);
         button.x = Math.floor(stage.mouseX/(w/2))*(w/2);
@@ -788,6 +807,8 @@ function tweenstart() {
 }
 
 function handleComplete() {
+
+    create_start_page();
 
     createAnimation();
     
