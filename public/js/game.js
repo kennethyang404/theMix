@@ -1,22 +1,22 @@
-var socket, canvas, stage, w, h, cx, cy, in_start_page, lastmovenum, loader
-var anim1A_c1, anim1A_c2, Animation1A_container
-var anim1B_c1, anim1B_c2, Animation1B_container
-var anim2A_heart, Animation2A_container
-var anim2B_heart, Animation2B_container
-var anim3A_l1, anim3A_l2, anim3A_l3, Animation3A_container
-var anim3B_l1, anim3B_l2, anim3B_l3, Animation3B_container
-var anim4A_l1, Animation4A_container
-var anim4B_l1, Animation4B_container
-var anim5A_circles, Animation5A_container
-var anim5B_circles, Animation5B_container
-var anim6A_circles, Animation6A_container
-var anim6B_circles, Animation6B_container
-var anim7A_polygon, Animation7A_container
-var anim7B_polygon, Animation7B_container
-var anim8A_s, Animation8A_container
-var anim8B_s, Animation8B_container
-var button
-var upper_tri, lower_tri, lower_rec, text1, text2
+var socket, canvas, stage, w, h, cx, cy, in_start_page, lastmovenum, loader;
+var anim1A_c1, anim1A_c2, Animation1A_container;
+var anim1B_c1, anim1B_c2, Animation1B_container;
+var anim2A_heart, Animation2A_container;
+var anim2B_heart, Animation2B_container;
+var anim3A_l1, anim3A_l2, anim3A_l3, Animation3A_container;
+var anim3B_l1, anim3B_l2, anim3B_l3, Animation3B_container;
+var anim4A_l1, Animation4A_container;
+var anim4B_l1, Animation4B_container;
+var anim5A_circles, Animation5A_container;
+var anim5B_circles, Animation5B_container;
+var anim6A_circles, Animation6A_container;
+var anim6B_circles, Animation6B_container;
+var anim7A_polygon, Animation7A_container;
+var anim7B_polygon, Animation7B_container;
+var anim8A_s, Animation8A_container;
+var anim8B_s, Animation8B_container;
+var button;
+var upper_tri, lower_tri, lower_rec, text1, text2;
 
 function init() {
 
