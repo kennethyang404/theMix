@@ -554,6 +554,7 @@ function tween8B() {
 }
 
 function shapebutton() {
+    console.log("button is defined");
     button = new createjs.Shape();
     button.graphics.f("Gray").dr(0, 0, w/2, h/4);
     button.visible = false;
@@ -809,7 +810,7 @@ function tweenstart() {
 
 function handleComplete() {
 
-
+    console.log("handleComplete entered");
 
     createAnimation();
     
