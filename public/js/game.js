@@ -38,11 +38,7 @@ function init() {
 
     in_start_page = true;
     lastmovenum = 0;
-    create_start_page();
-    createjs.Touch.enable(stage);
-    stage.addEventListener("stagemousedown", handleMouseDown);
-    stage.addEventListener("stagemousemove", handleMouseMove);
-    document.onkeydown = handleKeyDown;
+
 
     var assetsPath = "../audio/"
     var sounds = [
@@ -811,9 +807,16 @@ function tweenstart() {
 function handleComplete() {
 
     console.log("handleComplete entered");
+    
+    create_start_page();
 
     createAnimation();
     
+    createjs.Touch.enable(stage);
+    stage.addEventListener("stagemousedown", handleMouseDown);
+    stage.addEventListener("stagemousemove", handleMouseMove);
+    document.onkeydown = handleKeyDown;
+
     createjs.Ticker.setFPS(60);
 
     createjs.Ticker.addEventListener("tick", tick);
